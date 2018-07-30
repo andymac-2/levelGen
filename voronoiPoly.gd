@@ -2,8 +2,8 @@ extends Polygon2D
 
 # the outer bounding box of every polygon. creating a cell with it's centre
 # outside of these bounds is not defined.
-const top = 1
-const left = 1
+const top = 0
+const left = 0
 const bottom = 400
 const right = 700
 var boundary = [
@@ -24,11 +24,12 @@ var centre = Vector2(200, 200)
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-
-func create():
+func init(point) :
+	centre = point
 	color = Color(randf(), randf(), randf())
-	centre = Vector2(randf() * 699, randf() * 399)
-		
+	
+	
+func cement():
 	polygon = boundary
 	
 # func _process ():
@@ -37,18 +38,18 @@ func create():
 # it is assumed that the voronoi cell to be clipped is already valid 
 # in it's diagram
 func clip (cell):
-	if cell.polygon.size() == 0 :
+	if cell.boundary.size() == 0 :
 		return [null, null]
 		
 	var newPoly = []
 	var newAdjacents = []
 	var clipped = false
-	var previous = cell.polygon[cell.polygon.size() - 1]
+	var previous = cell.boundary[cell.boundary.size() - 1]
 	var clipFirst
 	var clipSecond
 	
-	for i in range (cell.polygon.size()):
-		var current = cell.polygon[i]
+	for i in range (cell.boundary.size()):
+		var current = cell.boundary[i]
 		# current vertex not clipped
 		if comparePointToBisector (cell.centre, centre, current):
 			# previous vertex clipped
@@ -70,7 +71,7 @@ func clip (cell):
 		
 		previous = current
 		
-	cell.polygon = newPoly
+	cell.boundary = newPoly
 	cell.adjacentCells = newAdjacents
 	
 	return [clipFirst, clipSecond]
