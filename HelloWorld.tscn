@@ -1,77 +1,36 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://HelloWorld.gd" type="Script" id=1]
-[ext_resource path="res://Button.gd" type="Script" id=2]
-[ext_resource path="res://Voronoi.gd" type="Script" id=3]
+[ext_resource path="res://Voronoi.gd" type="Script" id=2]
 
-[node name="Panel" type="Panel" index="0"]
+[node name="Panel" type="Spatial"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 171.0
-margin_bottom = 115.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+transform = Transform( 0.999862, -0.0136292, 0.00948212, 0.0136446, 0.999906, -0.0015622, -0.00945995, 0.00169139, 0.999954, 0, 0, 0 )
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="Label" type="Label" parent="." index="0"]
+[node name="Voronoi" type="Node" parent="." index="0"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 33.0
-margin_top = 14.0
-margin_right = 124.0
-margin_bottom = 45.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "This is a label!
-"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Button" type="Button" parent="." index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 49.0
-margin_top = 62.0
-margin_right = 108.0
-margin_bottom = 82.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Button."
-flat = false
-align = 1
 script = ExtResource( 2 )
+bottom = 20
+right = 20
+r = 2
 
-[node name="Voronoi" type="Node2D" parent="." index="2"]
+[node name="Camera" type="Camera" parent="." index="1"]
 
-script = ExtResource( 3 )
-bottom = 400
-right = 700
+transform = Transform( 0.999926, 0.00275285, 0.012186, -0.0104686, 0.716959, 0.697048, -0.00681792, -0.697119, 0.716933, 10.438, 7.96653, 24.8291 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+_sections_unfolded = [ "Transform" ]
 
 

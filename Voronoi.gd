@@ -1,8 +1,10 @@
-extends Node2D
+extends Node
 
 # top and left are both set to 0
-export var bottom = 400
-export var right = 700
+export var bottom = 20
+export var right = 20
+
+export var r = 2
 
 # class member variables go here, for example:
 # var a = 2
@@ -11,11 +13,11 @@ var children = []
 const cell = preload("voronoiCell.tscn")
 
 func _ready():
-	var points = bridsons(30, 60, 10)
+	var points = bridsons(r, r*2, 10)
 	
 	for p in points:
 		var temp = cell.instance()
-		temp.init(p)
+		temp.init(p, bottom, right)
 		add_child(temp)
 	
 	var children = get_children()

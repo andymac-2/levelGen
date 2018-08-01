@@ -1,17 +1,12 @@
-extends Polygon2D
+extends Node
 
 # the outer bounding box of every polygon. creating a cell with it's centre
 # outside of these bounds is not defined.
 const top = 0
 const left = 0
-const bottom = 400
-const right = 700
-var boundary = [
-	Vector2 (left, top),
-	Vector2 (left, bottom),
-	Vector2 (right, bottom),
-	Vector2 (right, top)
-]
+var bottom = 400
+var right = 700
+var boundary = []
 
 enum {TOP, LEFT, BOTTOM, RIGHT}
 # sorted clockwise
@@ -24,13 +19,20 @@ var centre = Vector2(200, 200)
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-func init(point) :
+func init(point, b, r) :
 	centre = point
-	color = Color(randf(), randf(), randf())
-	
+	bottom = b
+	right = r
+	boundary = [
+		Vector2 (left, top),
+		Vector2 (left, bottom),
+		Vector2 (right, bottom),
+		Vector2 (right, top)
+	]
 	
 func cement():
-	polygon = boundary
+	var poly = get_node("visualPrism")
+	poly.draw(boundary, centre)
 	
 # func _process ():
 	
